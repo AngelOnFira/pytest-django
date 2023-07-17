@@ -25,7 +25,7 @@ class VerboseDebuggingWSGIRequestHandler(VerboseWSGIRequestHandler):
 class VerboseLiveServerThread(LiveServerThread):
     request_handler_class = VerboseWSGIRequestHandler
 
-    def _create_server(self):
+    def _create_server(self, connections_override={}):
         return ThreadedWSGIServer(
             (self.host, self.port),
             self.request_handler_class,
